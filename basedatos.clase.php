@@ -32,21 +32,21 @@ class basedatos
     private $alias = array();
     private $diferente = '';
     private $tabla_alias = array();
-	private $transacciones = false;
-	private $error_trans = array();
+    private $transacciones = false;
+    private $error_trans = array();
 
-	/** 
-     *  Método estático, crea una instancia de una TABLA para su posterior uso.
+    /** 
+     	 *  Método estático, crea una instancia de una TABLA para su posterior uso.
 	 *
 	 *	Ejemplo de uso:
-	 *
+	 * 
 	 *	$objeto = basedatos::tabla('usuarios');
-     *
-     *  @access public
+     	 *
+     	 *  	@access public
 	 *	@method object tabla( string $tabla [, array $conexion] )
 	 *	@param string $tabla (requerido)
 	 *	@param array $conexion (opcional)
-	 *	@return instance or object
+	 *	@return instancia del objeto
 	 *
 	 *	En el parámetro `tabla` se debe ingresar el nombre de la tabla (requerido).
 	 *	En el parametro `conexion` se deben ingresar los datos como en el archivo 
@@ -84,7 +84,7 @@ class basedatos
         return self::$_instancia[$nombre_instancia];
     }
 	
-	/** 
+    /** 
      *  Método constructor
      * 
      *  @access private
@@ -101,10 +101,10 @@ class basedatos
         } else
             $this->conexion = new mysqli($bd_servidor, $bd_usuario, $bd_clave, $bd_nombre);
         
-		if (!$this->conexion)
+	if (!$this->conexion)
             $this->error('Error de Conexión. No se logró conectar a la base de datos.');
 		
-		// Ajusta la codificación para leer la base de datos
+	// Ajusta la codificación para leer la base de datos
         $this->conexion->set_charset($bd_codificacion);
 		
         if ($this->conexion->error)
@@ -133,7 +133,7 @@ class basedatos
      *  @access public
 	 *	@method object nueva_conexion( [array $parametros] );
 	 *	@param array $parametros (opcional)
-	 *	@return instance
+	 *	@return instancia del objeto
 	 *	@example $parametros = array('servidor'=>'localhost','usuario'=>'user','clave'=>'pass','nombre'=>'base','codificacion'=>'utf8');
 	 *
 	 *	Ejemplo de uso:
@@ -150,7 +150,7 @@ class basedatos
      *	@access public
 	 *	@method object reajusteAutomatico( [bool $booleano] );
 	 *	@param bool $booleano (opcional)
-	 *  @return instance
+	 *  @return instancia de objeto
      */
     public function reseteo_automatico($booleano = true)
     {
@@ -326,8 +326,8 @@ class basedatos
     }
 	
 	/** 
-     *  Devuelve las filas de la tabla como una lista de matrices asociativas.
-	 *  Se puede determinar el limite o la cantidad de artículos y declarar
+     *  Devuelve las filas de la tabla como una matriz de caracter asociativo.
+	 *  Se puede determinar el límite de registros y declarar
 	 *	su punto de inicio. Si ambos parámetros no se definen, se
 	 *	devolverán todos los registros encontrados.
 	 *
@@ -365,7 +365,7 @@ class basedatos
     }
 	
 	/** 
-     *  Devuelve una fila de la tabla como 'vector' asociativo.
+     *  Devuelve un registro de la tabla como 'vector' asociativo.
 	 *	No tiene parámetros
 	 *
      *	@access public
